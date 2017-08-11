@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<base href="">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>
+
+<body ng-app="myApp">
+  <h2 style="text-align: center;background-color:#DF8112"> colorElephant</h2>
+  <div>
+    <span class="loginAsButton"><a href="/admin">Login as Admin</a> 
+    <!-- <span class="loginAsButton"><a href="/register">Register Page</a> </span>-->
+    <div ng-view></div>
+  </div>
+  <script src="myApp.js"></script>
+  <script src="myService.js"></script>
+</body>
+</html>

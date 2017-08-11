@@ -1,0 +1,80 @@
+
+<div class="userForm">
+<form name="form" class="css-form" novalidate>
+
+    <label class="uname">Name:
+          <input type="text" ng-model="user.name" name="uName" required="" />
+    </label>
+    <div ng-show="form.$submitted || form.uName.$touched">
+        <div ng-show="form.uName.$error.required">The Name field is required.</div>
+    </div>
+    <br />
+
+    <label class="uemail">E-mail:
+          <input type="email" ng-model="user.email" name="uEmail" required   ng-blur="checkIfDuplicate(user.email);" />
+    </label>
+    <div ng-show="form.$submitted || form.uEmail.$touched">
+        <span ng-show="form.uEmail.$error.required">The email field is required.</span>
+        <span ng-show="form.uEmail.$error.email">This is not a valid email.</span>
+    </div>
+    <br />
+
+    <label class="uurl">URL:
+        <input type="url" name="url" ng-model="user.url" required />
+    </label>
+    <div ng-show= "form.$submitted || form.url.$touched">
+        <span ng-show= "form.input.$error.required">This field is required!</span>
+        <span ng-show= "form.input.$error.url">Not valid url!</span>
+    </div>
+    <br />
+    <!--<label> Upload Your Resume: 
+        <input type="file" name="file" ng-model-instant id="fileToUpload" multiple onchange= "angular.element(this).scope().setFiles(this)" />
+    </label>
+    <br />
+    <div ng-show="files.length">
+        <div ng-repeat="file in files.slice(0)">
+            <span>{{file.webkitRelativePath || file.name}}</span> (
+            <span ng-switch="file.size > 1024*1024">
+                    <span ng-switch-when="true">{{file.size / 1024 / 1024 | number:2}} MB</span>
+            <span ng-switch-default>{{file.size / 1024 | number:2}} kB</span>
+            </span>)
+        </div>
+        <input type="button" ng-click="saveFile()" value="Upload" />
+    </div>-->
+    
+    <label class="ucoverletter">
+        <span class="coverLetterText">Cover Letter: </span><textarea type="textarea" name="coverLetter" ng-model="user.coverLetter" ng-minlength="50" required></textarea>
+    </label>
+    <div ng-show= "form.$submitted || form.coverLetter.$touched">
+        <span ng-show= "form.coverLetter.$error.required">This filed is required</span>
+        <span ng-show= "form.coverLetter.$invalid">Not valid Cover letter!</span>
+    </div>
+    <br />
+
+    <label class="uworking">Do you like working:</label>
+    <div style="display:inline-block;">
+        <label><input type="radio" name="radio" ng-model="user.likeWorking" value="yes" />Yes</label>
+        <label><input type="radio" name="radio" ng-model="user.likeWorking" value="no" />No</label>
+    </div>
+    <br />
+
+    <label class="ucaptcha">
+        <div>
+            <span>Retype the characters from the picture:</span>
+            <span ng-bind="automaticCaptchaCode"></span>
+        </div>
+        <br />
+        <!-- captcha code user input textbox -->
+        <input type="number" name="captchaCode" ng-model="enteredCaptchaCode" correct-captcha id="enteredcaptchaCode" autocomplete="off">
+    </label>
+    <div class="error" ng-show="enteredCaptchaCode !== automaticCaptchaCode">
+        Incorrect Captcha code.
+    </div>
+    <br />
+
+    <div>
+        <input type="button" ng-disabled="enteredCaptchaCode !== automaticCaptchaCode" ng-click="reset(form)" value="Reset" />
+        <input type="submit" ng-click="update(user)" value="Save" />
+    </div>
+</form>
+</div>

@@ -1,0 +1,22 @@
+<div> Profile Details </div>
+
+<div ng-repeat = 'profDetail in profileDetails'>
+    Name: <span ng-bind="profDetail.name"></span>
+    <br />
+    EmailId: <span ng-bind="profDetail.email"></span>
+    <br />
+    URL: <span ng-bind="profDetail.url"></span>
+    <br />
+    Cover Letter: <span ng-bind="profDetail.coverLetter"></span>    
+    <br />
+    Like To Work: <span ng-bind="profDetail.likeWorking"></span>
+    <br />
+</div>
+
+<div>
+    Rating By Admin 
+    <span ng-repeat="rating in ratings">{{rating.current}} out of {{rating.max}}
+        <div star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)"></div>
+    </span>
+    <button ng-click="submitRating()">Submit Rating</button>
+</div>

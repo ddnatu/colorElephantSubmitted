@@ -1,0 +1,7 @@
+<h2>Profiles Page</h2>
+
+<div ng-repeat = 'profile in profiles'>
+    Name: <span ng-bind="profile.name"></span>
+    EmailId: <span ng-bind="profile.email"></span>
+    <button ng-click="getProfileDetails(profile.email)">Get Profile Details</button>
+</div>
